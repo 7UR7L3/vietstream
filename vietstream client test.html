@@ -1,0 +1,55 @@
+<html>
+
+<head>
+<style>
+#words
+{
+	display: flex;
+	flex-wrap: wrap;
+	width: 600px;
+}
+div
+{
+	margin: 10px;
+}
+iframe
+{
+	width: 800px;
+	height: 900px;
+}
+</style>
+</head>
+
+<body>
+
+<audio controls>
+<source type="audio/ogg"></audio>
+</audio>
+
+<script>
+i = 0;
+function refresh()
+{
+	document.querySelector( "audio" ).src = `http://localhost:5000/vietstream.opus?q=${word}&n=${i++}#${Math.random()}`;
+	document.querySelector( "audio" ).play();
+}
+</script>
+
+<button onclick="refresh()">refresh</button>
+
+<script>
+var toAdd = "";
+toAdd += "<div id=words>";
+for( var word of ["như", "tôi", "mình", "mà", "ông", "là", "cho", "trên", "là", "với", "họ", "được", "tại", "một", "có", "này", "từ", "bởi", "nóng", "từ", "nhưng", "những gì", "một số", "là", "nó", "anh", "hoặc", "có", "các", "của", "để", "và", "một", "trong", "chúng tôi", "có thể", "ra", "khác", "là", "mà", "làm", "của họ", "thời gian", "nếu", "sẽ", "như thế nào", "nói", "một", "môi", "nói", "tôi"] )
+	toAdd += `<div onclick="word='${word}';refresh();">${word}</div>`;
+toAdd += "</div>"
+document.body.innerHTML += toAdd;
+
+refresh();
+</script>
+
+<iframe src="http://localhost:5000"></iframe>
+
+</body>
+
+</html>
