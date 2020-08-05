@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <html>
 
 <head>
@@ -37,13 +38,11 @@ function refresh()
 
 <button onclick="refresh()">refresh</button>
 
+<div id="words"></div>
+
 <script>
-var toAdd = "";
-toAdd += "<div id=words>";
 for( var word of ["như", "tôi", "mình", "mà", "ông", "là", "cho", "trên", "là", "với", "họ", "được", "tại", "một", "có", "này", "từ", "bởi", "nóng", "từ", "nhưng", "những gì", "một số", "là", "nó", "anh", "hoặc", "có", "các", "của", "để", "và", "một", "trong", "chúng tôi", "có thể", "ra", "khác", "là", "mà", "làm", "của họ", "thời gian", "nếu", "sẽ", "như thế nào", "nói", "một", "môi", "nói", "tôi"] )
-	toAdd += `<div onclick="word='${word}';refresh();">${word}</div>`;
-toAdd += "</div>"
-document.body.innerHTML += toAdd;
+	document.querySelector( "#words" ).innerHTML += `<div onclick="word='${word}';refresh();">${word}</div>`;
 
 refresh();
 </script>
